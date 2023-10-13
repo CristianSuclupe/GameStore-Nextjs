@@ -1,7 +1,7 @@
 "use client";
 import { Container } from "semantic-ui-react";
 import { HomeComponents } from "@/src/components/HomeComponents";
-import { Separator } from "@/src/components/Shared";
+import { Separator, BarTrust } from "@/src/components/Shared";
 const HomePage = () => {
   return (
     <>
@@ -10,6 +10,9 @@ const HomePage = () => {
       <Container>
         <HomeComponents.LatestGames title="Últimos lanzamientos" />
       </Container>
+      <Separator height={100} />
+      <BarTrust />
+      <Separator height={100} />
     </>
   );
 };

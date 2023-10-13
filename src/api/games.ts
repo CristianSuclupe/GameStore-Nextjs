@@ -20,6 +20,7 @@ export type GameAttributes = {
   publishedAt: string;
   platform: PlatFormType;
   wallpaper: Wallpaper;
+  cover: Cover;
 };
 
 export type Wallpaper = {
@@ -34,6 +35,23 @@ export type WallpaperData = {
 export type WallpaperAttributes = {
   name: string;
   witdh: number;
+  height: number;
+  url: string;
+  size: number;
+};
+
+type Cover = {
+  data: CoverData;
+};
+
+type CoverData = {
+  id: number;
+  attributes: CoverAttributes;
+};
+
+type CoverAttributes = {
+  name: string;
+  width: number;
   height: number;
   url: string;
   size: number;

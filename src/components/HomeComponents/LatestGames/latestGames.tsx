@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Game, GameData } from "@/src/api";
+import { GridGames } from "../../Shared";
 
 type LatestGamesProps = {
   title: string;
@@ -27,5 +28,10 @@ export const LatestGames = ({ title, limit, platformId }: LatestGamesProps) => {
   }, []);
   if (!games) return null;
   console.log(games);
-  return <div>latestGames</div>;
+  return (
+    <div>
+      <h2>{title}</h2>
+      <GridGames games={games} />
+    </div>
+  );
 };

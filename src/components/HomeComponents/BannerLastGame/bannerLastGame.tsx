@@ -46,8 +46,16 @@ export const BannerLastGame = () => {
           </span>
           <h2>{game.attributes.title}</h2>
           <p className={styles.price}>
-            <Label.Discount>-{game.attributes.discount}%</Label.Discount>
-            <span className={styles.finalPrice}>${price}</span>
+            {game.attributes.discount > 0 && (
+              <Label.Discount>-{game.attributes.discount}%</Label.Discount>
+            )}
+            <span
+              className={`${
+                game.attributes.discount > 0 && styles.marginLeft
+              } ${styles.finalPrice}`}
+            >
+              {price}$
+            </span>
           </p>
         </Container>
       </Link>
