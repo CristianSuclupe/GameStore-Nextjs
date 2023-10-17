@@ -72,7 +72,7 @@ export class Game {
     }
   }
 
-  async getLatestPublished({ limit = 9, platformId = "" }) {
+  async getLatestPublished({ limit = 9, platformId = 0 }) {
     try {
       const filterPlatform =
         platformId && `filters[platform][id][$eq]=${platformId}`;
@@ -84,6 +84,24 @@ export class Game {
       const response = await fetch(url);
       const result = await response.json();
       if (response.status !== 200) throw result;
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getGameByPlatformSlug(platform: string, page: number) {
+    try {
+      const filters = `filters[platform][slug][$eq]=${platform}`;
+      const pagination = `pagination[page]=${page}&pagination[pageSize]=30`;
+      const populate = "populate=*";
+      const urlParams = `${filters}&${pagination}&${populate}`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`;
+      console.log(url);
+      const response = await fetch(url);
+      const result = await response.json();
+      if (response.status !== 200) throw result;
+      console.log(result);
       return result;
     } catch (error) {
       throw error;

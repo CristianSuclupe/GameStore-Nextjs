@@ -9,7 +9,7 @@ export const Footer = () => {
         <div className={styles.columns}>
           <div>
             <Link href="/">
-              <Image src="images/logo.png" alt="Gaming" />
+              <Image src="/images/logo.png" alt="Gaming" />
             </Link>
           </div>
           <div>
