@@ -1,6 +1,7 @@
 "use client";
 import { useAuthContext } from "@/src/hooks/useAuth";
 import { useRouter } from "next/navigation";
+
 export default function JLayout({ children }: { children: React.ReactNode }) {
   // Obtenemos el usuario actual y el router
   const { user } = useAuthContext();

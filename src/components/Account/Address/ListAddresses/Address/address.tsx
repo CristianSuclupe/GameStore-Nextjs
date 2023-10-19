@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { AddressData } from "@/src/components/Account/Address/ListAddresses";
 import { AddressForm } from "../../AddressForm";
 import { BasicModal, ModalConfirm } from "@/src/components/Shared";
 import { Button, Icon } from "semantic-ui-react";
 import { Address } from "@/src/api";
+import { AddressData } from "@/src/utils";
 import styles from "./address.module.scss";
 
 type AddressInfoProps = {

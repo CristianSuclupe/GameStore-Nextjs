@@ -4,10 +4,7 @@ import Menu from "./Menu/menu";
 import { Image } from "semantic-ui-react";
 import styles from "./topBar.module.scss";
 
-type TopBarProps = {
-  isOpenSearch: boolean;
-};
-export const TopBar = ({ isOpenSearch }: TopBarProps) => {
+export const TopBar = () => {
   return (
     <header className={styles.topBar}>
       <div className={styles.left}>

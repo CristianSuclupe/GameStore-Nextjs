@@ -2,27 +2,17 @@
 "use client";
 import { createContext, useState, useEffect } from "react";
 import { Token, User } from "@/src/api";
+import { UserData } from "../utils/types/userType";
 
 // Creamos instancias de los controladores de token y usuario
 const tokenController = new Token();
 const userController = new User();
 // Definimos el tipo de datos para el usuario
-type UserInfo = {
-  blocked: boolean;
-  confirmed: boolean;
-  createdAt: string;
-  email: string;
-  firstname: string;
-  readonly id: number;
-  lastname: string;
-  provider: string;
-  updatedAt: string;
-  username: string;
-};
+
 // Definimos el tipo de datos para el contexto de autenticación
 type AuthContextProps = {
   accessToken: string | null;
-  user: UserInfo | null;
+  user: UserData | null;
   login: (token: string) => Promise<void>;
   logout: () => void;
   updateUser: (key: string, value: string) => void;
@@ -34,7 +24,7 @@ export const AuthContext = createContext<AuthContextProps | null>(null);
 // Definimos el componente AuthProvider
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   // Definimos el estado inicial del usuario, el token y el estado de carga
-  const [user, setUser] = useState<UserInfo | null>(null);
+  const [user, setUser] = useState<UserData | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 

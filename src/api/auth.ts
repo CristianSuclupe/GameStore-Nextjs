@@ -1,20 +1,8 @@
 import { ENV } from "@/src/utils";
-
-type IRegisterData = {
-  username: string;
-  email: string;
-  password: string;
-  firstname: string;
-  lastname: string;
-};
-
-type ILoginData = {
-  identifier: string;
-  password: string;
-};
+import { RegisterData, LoginData } from "../utils/types/authType";
 
 export class Auth {
-  async register(data: IRegisterData) {
+  async register(data: RegisterData) {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.REGISTER}`;
       const params = {
@@ -33,7 +21,7 @@ export class Auth {
     }
   }
 
-  async login(data: ILoginData) {
+  async login(data: LoginData) {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.AUTH.LOGIN}`;
       const params = {

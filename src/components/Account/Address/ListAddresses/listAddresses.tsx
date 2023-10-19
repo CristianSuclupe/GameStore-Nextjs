@@ -2,16 +2,11 @@ import { useState, useEffect } from "react";
 import { Address } from "@/src/api";
 import { AddressInfo } from "./Address";
 import { useAuthContext } from "@/src/hooks/useAuth";
-import { IAddressData } from "@/src/api";
+import { AddressData } from "@/src/utils";
 import { map } from "lodash";
 import styles from "./listAddresses.module.scss";
 
 const addressController = new Address();
-
-export type AddressData = {
-  id: number;
-  attributes: IAddressData;
-};
 
 type ListAddressesProps = {
   reload: boolean;

@@ -1,22 +1,7 @@
 import { ENV } from "../utils";
 
-export type PlatFormType = {
-  id: string;
-  attributes: {
-    title: string;
-    slug: string;
-    icon: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
-    };
-  };
-};
-
 export class Platform {
-  async getAll(): Promise<PlatFormType[]> {
+  async getAll() {
     try {
       const sort = "sort=order:asc";
       const populate = "populate=icon";
@@ -34,12 +19,9 @@ export class Platform {
     try {
       const filters = `filters[slug][$eq]=${slug}`;
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PLATFORM}?${filters}`;
-      console.log(url);
       const response = await fetch(url);
-      console.log(response);
       const result = await response.json();
       if (response.status !== 200) throw result;
-      console.log(result);
       return result.data[0];
     } catch (error) {
       throw error;

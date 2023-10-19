@@ -1,16 +1,11 @@
 // Importamos los módulos y funciones necesarios
 import { ENV, authFetch } from "../utils";
+import { UserData } from "../utils/types/userType";
 
-type UserData = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-};
 // Definimos la clase User
 export class User {
   // Definimos la función asincrónica getMe
-  async getMe() {
+  async getMe(): Promise<UserData> {
     try {
       // Construimos la URL para obtener el usuario actual
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS_ME}`;
@@ -33,7 +28,7 @@ export class User {
     }
   }
 
-  async updateMe(userId: number, data: Partial<UserData>) {
+  async updateMe(userId: number, data: Partial<UserData>): Promise<UserData> {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.USERS}/${userId}`;
       const params = {

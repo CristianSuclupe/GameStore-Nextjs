@@ -1,23 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { PlatFormType } from "@/src/api/platform";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Image, Icon, Input } from "semantic-ui-react";
-import _ from "lodash";
+import _, { set } from "lodash";
 import classNames from "classnames";
 import { Platform } from "@/src/api/platform";
 import styles from "./menu.module.scss";
 
-type MenuProps = {
-  isOpenSearch?: boolean;
-};
-
 const platformController = new Platform();
 
-const Menu = ({ isOpenSearch }: MenuProps) => {
-  const [platforms, setPlatforms] = useState<PlatFormType[] | null>(null);
+const Menu = () => {
+  const [platforms, setPlatforms] = useState<PlatFormType[]>([]);
   const [showSearch, setShowSearch] = useState(false);
-
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
   const openCloseSearch = () => setShowSearch((prevState) => !prevState);
 
   useEffect(() => {
@@ -30,6 +30,17 @@ const Menu = ({ isOpenSearch }: MenuProps) => {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    if (!pathname.startsWith("/search")) {
+      setSearchText("");
+      setShowSearch(false);
+    }
+  }, [pathname]);
+  const onSearch = (text: string) => {
+    setSearchText(text);
+    router.replace(`/search?s=${text}`);
+  };
   return (
     <div className={styles.platforms}>
       {_.map(platforms, (platform) => (
@@ -54,6 +65,8 @@ const Menu = ({ isOpenSearch }: MenuProps) => {
           placeholder="Buscador"
           className={styles.input}
           focus={true}
+          value={searchText}
+          onChange={(_, data) => onSearch(data.value)}
         />
         <Icon
           name="close"

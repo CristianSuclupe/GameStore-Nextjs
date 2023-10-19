@@ -1,17 +1,8 @@
 import { ENV, authFetch } from "../utils";
-
-export type IAddressData = {
-  title: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  postal_code: string;
-  phone: string;
-};
+import { AddressAttributes } from "../utils/types/addressType";
 
 export class Address {
-  async create(data: IAddressData, addressId: number) {
+  async create(data: AddressAttributes, addressId: number) {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}`;
       const params = {
@@ -50,7 +41,7 @@ export class Address {
     }
   }
 
-  async update(addressId: number, data: Partial<IAddressData>) {
+  async update(addressId: number, data: AddressAttributes) {
     try {
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
       const params = {

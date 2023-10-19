@@ -1,5 +1,6 @@
+import { PlatForms } from "@/src/components/PlatformComponents";
 import { Platform, Game } from "@/src/api";
-import { number } from "yup";
+import { GameData, PlatFormData } from "@/src/utils";
 
 type PlatFormPageProps = {
   params: {
@@ -19,17 +20,22 @@ const getData = async (platform: string, page: number) => {
     page
   );
   return {
-    platform: responsePlatform.data,
+    platform: responsePlatform,
     games: responseGame.data,
     pagination: responseGame.meta.pagination,
   };
 };
 
-const PlatFormPage = ({ params, searchParams }: PlatFormPageProps) => {
-  const { platform } = params;
-  const { page = 1 } = searchParams;
-  const data = getData(platform, page);
-  return <div>PlatFormPage</div>;
+const PlatFormPage = async ({ params, searchParams }: PlatFormPageProps) => {
+  const { platform: selectedPlatform } = params;
+  const { page: selectedPage = 1 } = searchParams;
+  const { platform, games, pagination } = await getData(
+    selectedPlatform,
+    selectedPage
+  );
+  return (
+    <PlatForms games={games} platform={platform} pagination={pagination} />
+  );
 };
 
 export default PlatFormPage;

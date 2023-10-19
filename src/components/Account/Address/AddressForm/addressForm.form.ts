@@ -1,15 +1,15 @@
 import * as yup from "yup";
-import { AddressData } from "../ListAddresses";
+import { AddressAttributes } from "@/src/utils";
 
-export const initialValues = (address?: AddressData) => {
+export const initialValues = (address?: AddressAttributes) => {
   return {
-    title: address?.attributes.title || "",
-    name: address?.attributes.name || "",
-    address: address?.attributes.address || "",
-    city: address?.attributes.city || "",
-    state: address?.attributes.state || "",
-    postal_code: address?.attributes.postal_code || "",
-    phone: address?.attributes.phone || "",
+    title: address?.title || "",
+    name: address?.name || "",
+    address: address?.address || "",
+    city: address?.city || "",
+    state: address?.state || "",
+    postal_code: address?.postal_code || "",
+    phone: address?.phone || "",
   };
 };
 

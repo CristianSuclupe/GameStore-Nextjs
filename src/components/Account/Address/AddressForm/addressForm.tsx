@@ -3,7 +3,7 @@ import { Form } from "semantic-ui-react";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "./addressForm.form";
 import { Address } from "@/src/api";
-import { AddressData } from "../ListAddresses";
+import { AddressData, AddressAttributes } from "@/src/utils";
 import { useAuthContext } from "@/src/hooks/useAuth";
 
 const addressController = new Address();
@@ -22,10 +22,10 @@ export const AddressForm = ({
   const { user } = useAuthContext();
   const id = user?.id ?? 0;
   const formik = useFormik({
-    initialValues: initialValues(address),
+    initialValues: initialValues(address?.attributes),
     validationSchema: validationSchema(),
     validateOnChange: false,
-    onSubmit: async (formData) => {
+    onSubmit: async (formData: AddressAttributes) => {
       try {
         if (address) {
           await addressController.update(address.id, formData);
@@ -47,7 +47,7 @@ export const AddressForm = ({
         placeholder="Titulo de la direccion"
         value={formik.values.title}
         onChange={formik.handleChange}
-        error={formik.errors.title}
+        error={formik.errors?.title}
       />
       <Form.Group widths="equal">
         <Form.Input
@@ -55,14 +55,14 @@ export const AddressForm = ({
           placeholder="Nombre y apellidos"
           value={formik.values.name}
           onChange={formik.handleChange}
-          error={formik.errors.name}
+          error={formik.errors?.name}
         />
         <Form.Input
           name="address"
           placeholder="Direccion"
           value={formik.values.address}
           onChange={formik.handleChange}
-          error={formik.errors.address}
+          error={formik.errors?.address}
         />
       </Form.Group>
       <Form.Group widths="equal">
@@ -71,14 +71,14 @@ export const AddressForm = ({
           placeholder="Provincia"
           value={formik.values.state}
           onChange={formik.handleChange}
-          error={formik.errors.state}
+          error={formik.errors?.state}
         />
         <Form.Input
           name="city"
           placeholder="Ciudad"
           value={formik.values.city}
           onChange={formik.handleChange}
-          error={formik.errors.city}
+          error={formik.errors?.city}
         />
       </Form.Group>
       <Form.Group widths="equal">
@@ -87,14 +87,14 @@ export const AddressForm = ({
           placeholder="Código postal"
           value={formik.values.postal_code}
           onChange={formik.handleChange}
-          error={formik.errors.postal_code}
+          error={formik.errors?.postal_code}
         />
         <Form.Input
           name="phone"
           placeholder="Número de celular"
           value={formik.values.phone}
           onChange={formik.handleChange}
-          error={formik.errors.phone}
+          error={formik.errors?.phone}
         />
       </Form.Group>
       <Form.Button type="submit" primary fluid loading={formik.isSubmitting}>

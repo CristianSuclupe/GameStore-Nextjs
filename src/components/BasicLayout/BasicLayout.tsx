@@ -14,13 +14,12 @@ type ContainerLayoutProps = {
 
 const BasicLayout = ({
   children,
-  isOpenSearch = false,
   isContainer = false,
   relative = false,
 }: ContainerLayoutProps) => {
   return (
     <>
-      <TopBar isOpenSearch={isOpenSearch} />
+      <TopBar />
       <main>
         <Container fluid>
           <div className={classNames({ [styles.relative]: relative })}>
