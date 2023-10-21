@@ -25,6 +25,13 @@ const GamePage = async ({ params }: GamePageProps) => {
       />
       <GameComponents.Panel gameId={game.id} game={game.attributes} />
       <Separator height={50} />
+      <GameComponents.Info game={game.attributes} />
+      <Separator height={30} />
+      <GameComponents.Media
+        video={game.attributes.video}
+        screenshots={game.attributes.screenshots.data}
+      />
+      <Separator height={50} />
     </>
   );
 };
