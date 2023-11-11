@@ -2,6 +2,7 @@
 import { Container } from "semantic-ui-react";
 import { HomeComponents } from "@/src/components/HomeComponents";
 import { Separator, BarTrust, BannerAd } from "@/src/components/Shared";
+import { useCart } from "@/src/hooks/useCart";
 
 const platformsId = {
   playstation: 1,

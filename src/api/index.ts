@@ -5,3 +5,5 @@ export * from "./platform";
 export * from "./address";
 export * from "./games";
 export * from "./wishList";
+export * from "./cart";
+export * from "./order";

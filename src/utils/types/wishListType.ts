@@ -1,3 +1,5 @@
+import { GameData } from "./gameType";
+
 export interface WishListData {
   data: WishListDatum;
   meta: WishListMeta;
@@ -12,6 +14,7 @@ export interface WishListAttributes {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  game: GameData;
 }
 
 export interface WishListMeta {

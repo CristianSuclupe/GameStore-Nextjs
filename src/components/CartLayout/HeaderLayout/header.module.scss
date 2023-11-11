@@ -1,0 +1,125 @@
+@import "~/src/scss/index.scss";
+
+.headerCart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  z-index: 5;
+  background-color: $background-tertiary;
+}
+
+.left {
+  img {
+    width: 45%;
+    height: 40%;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    &.active {
+      > span {
+        color: $text-primary;
+      }
+
+      .number {
+        border-color: $primary;
+      }
+    }
+
+    > span {
+      color: $text-secondary;
+    }
+
+    &.success .number {
+      border-color: $primary;
+      background-color: $primary;
+      color: $primary;
+
+      i {
+        display: flex;
+        position: absolute;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &.success .space {
+      background-color: $primary;
+    }
+
+    .number {
+      border: 3px solid $border-primary;
+      font-size: 12px;
+      border-radius: 100px;
+      height: 26px;
+      width: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 1px;
+      padding-top: 1px;
+      margin-right: 10px;
+
+      i {
+        display: none;
+      }
+    }
+
+    .space {
+      width: 100px;
+      height: 3px;
+      background-color: $border-primary;
+      margin-left: 15px;
+      margin-right: 20px;
+    }
+
+    &:last-of-type .space {
+      display: none;
+    }
+  }
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  > i {
+    color: $success;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid $border-primary;
+    padding-left: 10px;
+
+    > span {
+      &:first-of-type {
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      &:last-of-type {
+        font-size: 11px;
+        color: $text-secondary;
+        margin-top: -4px;
+      }
+    }
+  }
+}

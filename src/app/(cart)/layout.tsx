@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AuthProvider, CartProvider } from "@/src/context";
-import AuxLayout from "@/src/components/BasicLayout/AuxLayaout/auxLayout";
+import { CartLayout } from "@/src/components/CartLayout";
 import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <CartProvider>
-            <AuxLayout>{children}</AuxLayout>
+            <CartLayout>{children}</CartLayout>
           </CartProvider>
         </AuthProvider>
       </body>

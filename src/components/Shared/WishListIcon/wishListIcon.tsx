@@ -6,15 +6,19 @@ import { useAuthContext } from "@/src/hooks/useAuth";
 import { Icon } from "semantic-ui-react";
 import classNames from "classnames";
 import styles from "./wishListIcon.module.scss";
-import { boolean } from "yup";
 
 const wishListController = new WishList();
 
 type WishListIconProps = {
   className?: any;
   gameId: number;
+  onReloadWishList?: () => void;
 };
-export const WishListIcon = ({ gameId, className }: WishListIconProps) => {
+export const WishListIcon = ({
+  gameId,
+  className,
+  onReloadWishList,
+}: WishListIconProps) => {
   const [hasWishList, setHasWishList] = useState<boolean | WishListDatum>();
   const { user } = useAuthContext();
 
@@ -29,6 +33,7 @@ export const WishListIcon = ({ gameId, className }: WishListIconProps) => {
       if (!hasWishList || typeof hasWishList === "boolean") return null;
       await wishListController.delete(hasWishList.id);
       setHasWishList(false);
+      if (onReloadWishList) onReloadWishList();
     } catch (error) {
       console.log(error);
     }

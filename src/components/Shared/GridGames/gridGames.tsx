@@ -1,4 +1,4 @@
-import { GameData } from "@/src/api";
+import { GameDatum } from "@/src/utils";
 import Link from "next/link";
 import Image from "next/image";
 import _ from "lodash";
@@ -6,7 +6,7 @@ import { fn } from "@/src/utils";
 import { Label } from "../../Shared";
 import styles from "./gridGames.module.scss";
 
-export const GridGames = ({ games }: { games: GameData[] }) => {
+export const GridGames = ({ games }: { games: GameDatum[] }) => {
   return (
     <div className={styles.gridGames}>
       {_.map(games, (game) => (

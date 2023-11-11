@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import { Button, Container, Icon } from "semantic-ui-react";
 import { fn } from "@/src/utils";
+import { useCart } from "@/src/hooks/useCart";
 import { GameAttributes } from "@/src/utils/types/gameType";
 import Image from "next/image";
 import { WishListIcon } from "../../Shared";
@@ -11,7 +13,18 @@ type PanelProps = {
   game: GameAttributes;
 };
 export const Panel = ({ gameId, game }: PanelProps) => {
+  const [loading, setLoading] = useState(false);
   const buyPrice = fn.calcDiscountedPrice(game.price, game.discount);
+  const { addToCart } = useCart();
+
+  const addCartWrapper = () => {
+    setLoading(true);
+    addToCart(gameId);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  };
   return (
     <Container className={styles.panel}>
       <div className={styles.imgContainer}>
@@ -54,7 +67,7 @@ export const Panel = ({ gameId, game }: PanelProps) => {
             )}
             <span className={styles.price}>{buyPrice}$</span>
           </div>
-          <Button primary fluid>
+          <Button primary fluid onClick={addCartWrapper} loading={loading}>
             Comprar
           </Button>
           <WishListIcon className={styles.heart} gameId={gameId} />

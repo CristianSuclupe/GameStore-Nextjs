@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Info, Settings, Address } from "@/src/components/Account";
+import { Info, Settings, Address, WishList } from "@/src/components/Account";
 import { Separator } from "@/src/components/Shared";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/src/hooks/useAuth";
@@ -31,7 +31,8 @@ const AccountPage = () => {
       menuItem: "Lista de deseos",
       render: () => (
         <Tab.Pane attached={false}>
-          <p>Mi lista de deseos..</p>
+          <WishList />
+          <Separator height={80} />
         </Tab.Pane>
       ),
     },

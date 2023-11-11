@@ -84,4 +84,17 @@ export class Game {
       throw error;
     }
   }
+
+  async getGameById(id: number) {
+    try {
+      const populate = "populate[0]=cover&populate[1]=platform";
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}/${id}?${populate}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      if (response.status !== 200) throw result;
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
