@@ -39,7 +39,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const deleteAllItems = () => {
-    //Eliminar todos los items
+    cartController.deleteAll();
+    refreshTotalCart();
   };
 
   const changeQuantityItem = (id: string, quantity: number) => {

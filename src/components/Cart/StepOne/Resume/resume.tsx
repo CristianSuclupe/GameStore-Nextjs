@@ -40,7 +40,7 @@ export const Resume = ({ cartInfo }: ResumeProps) => {
   }, [cartInfo]);
 
   const goToStepTwo = () => {
-    router.push("/cart?step=2");
+    router.replace("/cart?step=2");
   };
   if (!total) return null;
   return (

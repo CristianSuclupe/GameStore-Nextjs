@@ -1,11 +1,11 @@
 "use client";
 import { CartData, AddressData } from "@/src/utils";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { forEach, map } from "lodash";
 import { Payment } from "../Payment";
 import { useAuthContext } from "@/src/hooks/useAuth";
 import { useCart } from "@/src/hooks/useCart";
-import { Cart } from "@/src/api";
 import { fn } from "@/src/utils";
 import styles from "./resume.module.scss";
 
@@ -14,6 +14,9 @@ type ResumeProps = {
   addressSelected: AddressData | undefined;
 };
 export const Resume = ({ carInfo, addressSelected }: ResumeProps) => {
+  const { user } = useAuthContext();
+  const { deleteAllItems } = useCart();
+  const router = useRouter();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -27,6 +30,10 @@ export const Resume = ({ carInfo, addressSelected }: ResumeProps) => {
     });
     setTotal(Number(totalTemp.toFixed(2)));
   }, [carInfo]);
+
+  const goToStepEnd = () => {
+    router.replace("/cart?step=3");
+  };
 
   if (!total) return null;
   return (
@@ -58,7 +65,16 @@ export const Resume = ({ carInfo, addressSelected }: ResumeProps) => {
           <span>{total}$</span>
         </div>
       </div>
-      {addressSelected && <Payment />}
+      {addressSelected && (
+        <Payment
+          goToStepEnd={goToStepEnd}
+          carInfo={carInfo}
+          addressSelected={addressSelected}
+          user={user}
+          total={total}
+          deleteAllItems={deleteAllItems}
+        />
+      )}
     </div>
   );
 };

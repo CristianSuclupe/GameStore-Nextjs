@@ -21,7 +21,7 @@ const CartPage = ({ searchParams }: CartPageProps) => {
   const renderComponent = () => {
     if (currentStep === 1) return <Cart.StepOne cartInfo={cartInfo} />;
     else if (currentStep === 2) return <Cart.StepTwo cartInfo={cartInfo} />;
-    return <p>tercero</p>;
+    else if (currentStep === 3) return <Cart.StepThree />;
   };
 
   useEffect(() => {

@@ -12,9 +12,11 @@ export const ENV = {
     ADDRESS: "addresses",
     GAME: "games",
     WISHLIST: "wishlists",
+    PAYMENT_ORDER: "payment-order",
+    SAVE_ORDER: "orders",
   },
   TOKEN: "token",
   CART: "cart",
-  ORDER: "payment-order",
+
   CHECKOUT: "checkout",
 };
