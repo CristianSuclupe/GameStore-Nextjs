@@ -13,7 +13,13 @@ export const HeaderWallpaper = ({
 }: HeaderWallpaperProps) => {
   return (
     <div className={styles.headerWallpaper}>
-      <Image src={image} alt="Imagen juego" width={width} height={height} />
+      <Image
+        src={image}
+        alt="Imagen juego"
+        width={width}
+        height={height}
+        priority
+      />
     </div>
   );
 };

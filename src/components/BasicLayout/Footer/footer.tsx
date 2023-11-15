@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Container, Image, Button } from "semantic-ui-react";
+import { Container, Button } from "semantic-ui-react";
+import Image from "next/image";
 import styles from "./footer.module.scss";
 
 export const Footer = () => {
@@ -9,7 +10,12 @@ export const Footer = () => {
         <div className={styles.columns}>
           <div>
             <Link href="/">
-              <Image src="/images/logo.png" alt="Gaming" />
+              <Image
+                src="/images/logo.png"
+                alt="Gaming"
+                width={486}
+                height={90}
+              />
             </Link>
           </div>
           <div>

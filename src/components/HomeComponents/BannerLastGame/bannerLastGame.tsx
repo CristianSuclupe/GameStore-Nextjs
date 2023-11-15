@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Container, Image } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import { DateTime } from "luxon";
+import Image from "next/image";
 import Link from "next/link";
-import { GameData, Game } from "@/src/api";
+import { Game } from "@/src/api";
+import { GameDatum } from "@/src/utils";
 import { fn } from "@/src/utils";
 import { Label } from "../../Shared";
 import styles from "./bannerLastGame.module.scss";
@@ -11,7 +13,7 @@ import styles from "./bannerLastGame.module.scss";
 const gameController = new Game();
 
 export const BannerLastGame = () => {
-  const [game, setGame] = useState<GameData>();
+  const [game, setGame] = useState<GameDatum>();
 
   useEffect(() => {
     (async () => {
@@ -36,8 +38,11 @@ export const BannerLastGame = () => {
     <div className={styles.container}>
       <Image
         src={wallpaper.data.attributes.url}
+        width={wallpaper.data.attributes.width}
+        height={wallpaper.data.attributes.height}
         alt="Imagen ultimo juego"
         className={styles.wallpaper}
+        priority
       />
       <Link className={styles.infoContainer} href={game.attributes.slug}>
         <Container>

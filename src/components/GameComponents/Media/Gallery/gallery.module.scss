@@ -46,13 +46,12 @@
     height: 100%;
     object-fit: cover;
   }
-
   > div {
     height: 100%;
 
     > div {
       width: 80%;
-      height: calc(100% - 100px);
+      height: calc(auto - 150px);
       margin: 0 auto;
       border-radius: 20px;
     }

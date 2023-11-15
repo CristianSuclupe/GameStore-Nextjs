@@ -1,7 +1,12 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import { RegisterForm } from "@/src/components/Auth";
 import styles from "./sign-up.module.scss";
 
+export const metadata: Metadata = {
+  title: "Crear Cuenta",
+  description: "Crea tu cuenta en Gaming",
+};
 const SignUpPage = () => {
   return (
     <>

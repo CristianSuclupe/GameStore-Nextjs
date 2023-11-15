@@ -2,7 +2,6 @@
 import { TopBar, Footer } from "@/src/components/BasicLayout";
 import { Container } from "semantic-ui-react";
 import classNames from "classnames";
-import { usePathname } from "next/navigation";
 import styles from "./basicLayout.module.scss";
 
 type ContainerLayoutProps = {

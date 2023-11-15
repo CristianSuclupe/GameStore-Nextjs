@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { Address } from "@/src/api";
 import { AddressInfo } from "./Address";

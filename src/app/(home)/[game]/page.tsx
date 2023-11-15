@@ -1,9 +1,22 @@
+import { Metadata } from "next";
 import { Game } from "@/src/api";
 import { GameComponents } from "@/src/components/GameComponents";
 import { Separator } from "@/src/components/Shared";
 type GamePageProps = {
   params: {
     game: string;
+  };
+};
+
+export const generateMetadata = async ({
+  params,
+}: GamePageProps): Promise<Metadata> => {
+  const { game } = params;
+  const gameController = new Game();
+  const responseGame = await gameController.getGameBySlug(game);
+  return {
+    title: `${responseGame.attributes.title}`,
+    description: `Información del juego: ${game}`,
   };
 };
 const getGame = async (slug: string) => {

@@ -1,6 +1,6 @@
+import { Metadata } from "next";
 import { PlatForms } from "@/src/components/PlatformComponents";
 import { Platform, Game } from "@/src/api";
-import { GameData, PlatFormData } from "@/src/utils";
 
 type PlatFormPageProps = {
   params: {
@@ -8,6 +8,14 @@ type PlatFormPageProps = {
   };
   searchParams: {
     page: number;
+  };
+};
+
+export const generateMetadata = ({ params }: PlatFormPageProps): Metadata => {
+  const { platform } = params;
+  return {
+    title: `Juegos de ${platform}`,
+    description: `Todos los juegos disponibles de: ${platform}`,
   };
 };
 

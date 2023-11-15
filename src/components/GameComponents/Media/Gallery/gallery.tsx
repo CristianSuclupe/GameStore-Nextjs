@@ -3,7 +3,7 @@ import { DAT } from "@/src/utils/types";
 import { FullModal } from "@/src/components/Shared";
 import Slider from "react-slick";
 import Image from "next/image";
-import _ from "lodash";
+import { map } from "lodash";
 import styles from "./gallery.module.scss";
 
 type GalleryProps = {
@@ -45,7 +45,7 @@ export const Gallery = ({ screenshots }: GalleryProps) => {
           />
         </div>
         <div className={styles.grid}>
-          {_.map(screenshotsClone, (screenshot) => (
+          {map(screenshotsClone, (screenshot) => (
             <div key={screenshot.id}>
               <Image
                 src={screenshot.attributes.url}
@@ -61,7 +61,7 @@ export const Gallery = ({ screenshots }: GalleryProps) => {
       <FullModal show={show} onClose={onOpenClose}>
         <div className={styles.carouselContainer}>
           <Slider {...settings}>
-            {_.map(screenshots, (screenshot) => (
+            {map(screenshots, (screenshot) => (
               <div key={screenshot.id}>
                 <Image
                   src={screenshot.attributes.url}

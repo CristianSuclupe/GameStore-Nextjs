@@ -22,7 +22,13 @@ export const BannerAd = ({
   return (
     <div className={styles.container}>
       <Container className={styles.containerImage}>
-        <Image src={image} width={623} height={611} alt="Imagen Banner" />
+        <Image
+          src={image}
+          width={623}
+          height={611}
+          alt="Imagen Banner"
+          priority
+        />
       </Container>
       <div className={styles.infoContainer}>
         <Container>

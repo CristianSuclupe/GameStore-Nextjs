@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { PlatFormType } from "@/src/api/platform";
+import { Data } from "@/src/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Image, Icon, Input } from "semantic-ui-react";
-import _, { set } from "lodash";
+import { Icon, Input } from "semantic-ui-react";
+import Image from "next/image";
+import { map } from "lodash";
 import classNames from "classnames";
 import { Platform } from "@/src/api/platform";
 import styles from "./menu.module.scss";
@@ -13,7 +14,7 @@ import styles from "./menu.module.scss";
 const platformController = new Platform();
 
 const Menu = () => {
-  const [platforms, setPlatforms] = useState<PlatFormType[]>([]);
+  const [platforms, setPlatforms] = useState<Data[]>([]);
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
@@ -43,11 +44,13 @@ const Menu = () => {
   };
   return (
     <div className={styles.platforms}>
-      {_.map(platforms, (platform) => (
+      {map(platforms, (platform) => (
         <Link key={platform.id} href={`/games/${platform.attributes.slug}`}>
           <Image
             src={platform.attributes.icon.data.attributes.url}
             alt="iconos plataformas"
+            width={platform.attributes.icon.data.attributes.width}
+            height={platform.attributes.icon.data.attributes.height}
           />
           {platform.attributes.title}
         </Link>
