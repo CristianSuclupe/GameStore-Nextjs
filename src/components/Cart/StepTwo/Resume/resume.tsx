@@ -32,7 +32,7 @@ export const Resume = ({ carInfo, addressSelected }: ResumeProps) => {
   }, [carInfo]);
 
   const goToStepEnd = () => {
-    router.replace("/cart?step=3");
+    router.push("/cart?step=3");
   };
 
   if (!total) return null;
