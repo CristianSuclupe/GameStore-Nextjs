@@ -1,4 +1,3 @@
-import { usePathname } from "next/navigation";
 import { GameDatum } from "@/src/utils";
 import Link from "next/link";
 import Image from "next/image";

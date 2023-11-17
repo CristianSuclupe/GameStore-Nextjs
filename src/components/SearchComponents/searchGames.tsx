@@ -1,12 +1,12 @@
 "use client";
-import { GameData } from "@/src/api";
+import { GameDatum } from "@/src/utils";
 import { useEffect } from "react";
 import { GridGames, NoResult, Pagination, Separator } from "../Shared";
 import { size } from "lodash";
 import { Container } from "semantic-ui-react";
 
 type SearchGamesProps = {
-  games: GameData[];
+  games: GameDatum[];
   pagination: {
     page: number;
     pageSize: number;
