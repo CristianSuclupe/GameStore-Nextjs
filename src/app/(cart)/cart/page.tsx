@@ -1,19 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Game } from "@/src/api";
 import { useCart } from "@/src/hooks/useCart";
 import { CartData } from "@/src/utils";
 import { Cart } from "@/src/components/Cart";
-type CartPageProps = {
-  searchParams: {
-    step: number;
-  };
-};
 
 const gameController = new Game();
 
-const CartPage = ({ searchParams }: CartPageProps) => {
-  const { step = 1 } = searchParams;
+const CartPage = () => {
+  const sParams = useSearchParams();
+  const step = sParams.get("step") ? sParams.get("step") : 1;
   const currentStep = Number(step);
   const [cartInfo, setCartInfo] = useState<CartData[]>([]);
   const { cart } = useCart();
